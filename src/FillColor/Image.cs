@@ -78,7 +78,7 @@ public class Image : IEnumerable<Pixel>
 
     public void TryGoLeft(Pixel pixel, Action<Pixel> action)
     {
-        if (pixel.X > 1) action(Left(pixel));
+        if (pixel.X > 0) action(Left(pixel));
     }
 
     public void TryGoRight(Pixel pixel, Action<Pixel> action)
@@ -88,7 +88,7 @@ public class Image : IEnumerable<Pixel>
 
     public void TryGoUp(Pixel pixel, Action<Pixel> action)
     {
-        if (pixel.Y > 1) action(Up(pixel));
+        if (pixel.Y > 0) action(Up(pixel));
     }
 
     #endregion Methods
