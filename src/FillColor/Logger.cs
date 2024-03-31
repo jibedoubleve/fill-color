@@ -25,7 +25,7 @@ public class Logger
         grid.AddRow("Time", "Pixel", "Log");
         foreach (var line in _logs)
         {
-            if (line.Value.Count != 2) continue;
+            if (line.Value.Count < 2) continue;
 
             var row = new List<string>()
             {

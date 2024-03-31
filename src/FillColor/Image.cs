@@ -13,13 +13,13 @@ public class Image : IEnumerable<Pixel>
 
     #region Constructors
 
-    public Image(int length, int width, IEnumerable<Pixel> pixels)
+    public Image(int height, int width, IEnumerable<Pixel> pixels)
     {
         pixels = pixels.ToArray();
         if (Size > pixels.Count())
             throw new ArgumentOutOfRangeException(nameof(pixels), "Too many pixels for the image");
 
-        Length = length;
+        Height = height;
         Width = width;
         _pixels = pixels;
     }
@@ -28,8 +28,8 @@ public class Image : IEnumerable<Pixel>
 
     #region Properties
 
-    private int Length { get; }
-    private int Size => Length * Width;
+    private int Height { get; }
+    private int Size => Height * Width;
     private int Width { get; }
 
     #endregion Properties
@@ -56,7 +56,7 @@ public class Image : IEnumerable<Pixel>
 
     public static implicit operator Canvas(Image image)
     {
-        var canvas = new Canvas(image.Length, image.Width);
+        var canvas = new Canvas(image.Height, image.Width);
         foreach (var pixel in image) canvas.SetPixel(pixel.X, pixel.Y, pixel.Color);
 
         return canvas;
@@ -83,7 +83,7 @@ public class Image : IEnumerable<Pixel>
 
     public void TryGoRight(Pixel pixel, Action<Pixel> action)
     {
-        if (pixel.X < Length - 1) action(Right(pixel));
+        if (pixel.X < Height - 1) action(Right(pixel));
     }
 
     public void TryGoUp(Pixel pixel, Action<Pixel> action)

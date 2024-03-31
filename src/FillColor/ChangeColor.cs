@@ -35,7 +35,7 @@ public static class ChangeColor
 
     private static Canvas Draw(Image image)
     {
-        var canvas = new Canvas(5, 5);
+        Canvas canvas = image;
         foreach (var pixel in image) canvas.SetPixel(pixel.X, pixel.Y, pixel.Color);
 
         return canvas;
