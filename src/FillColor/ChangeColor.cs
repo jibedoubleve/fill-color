@@ -41,7 +41,7 @@ public static class ChangeColor
         return canvas;
     }
 
-    public static void Execute()
+    public static void Execute(int x, int y)
     {
         var pixels = new List<Pixel>()
         {
@@ -81,12 +81,15 @@ public static class ChangeColor
         var canvas = Draw(image);
         AnsiConsole.Write(canvas);
 
-        int x = 0,
-            y = 0;
         AnsiConsole.MarkupLine($"\t[Yellow]Fill zone that contains pixel ({x}, {y}) in red. [/]");
         ColorizeWithBfs(image, x, y, Color.Red);
         AnsiConsole.Write((Canvas)image);
-        Logger.Dump();
+
+        AnsiConsole.WriteLine();
+        if (AnsiConsole.Confirm("Display logs?", false))
+        {
+            Logger.Dump();
+        }
     }
 
     #endregion Methods
